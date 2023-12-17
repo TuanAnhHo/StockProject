@@ -1,7 +1,7 @@
 import requests, json
 from datetime import datetime
 from AvailableStockSymbol import AvailableStock
-
+from GetAuthInfoFuncton import ReadConfigFile
 
 ## Function to crawl company profile from FireAnt
 def CrawlCompanyProfile(symbol:str):
@@ -11,9 +11,8 @@ def CrawlCompanyProfile(symbol:str):
     
     ## Open "AuthorizationInfo.json" to get Authorization Information
     request_url = "https://restv2.fireant.vn/symbols/{symbol}/profile".format(symbol=symbol)
-    
-    with open("AuthorizationInfo.json", mode="r") as file:
-        headers = json.load(file).get('FireAnt')
+    # Using ReadConfigFile function to get Authorizaton information of FireAnt
+    headers = ReadConfigFile("Authorization.ini","FireAnt")
         
     try:
         response = requests.get(request_url, headers=headers)
