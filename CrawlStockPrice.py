@@ -1,4 +1,4 @@
-import requests, pandas, pendulum, json
+import requests, pandas
 from datetime import datetime
 from AvailableStockSymbol import AvailableStock
 
@@ -73,7 +73,7 @@ class CrawlStockPriceBySymbol:
                                                                 'h':'HighestPrice',
                                                                 'l':'LowestPrice',
                                                                 'v':'Volumn'})
-                
+ 
                 return df_stock_data.drop(['s'], axis=1)
         
             except:

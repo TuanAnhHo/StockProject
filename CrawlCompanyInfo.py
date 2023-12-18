@@ -1,5 +1,4 @@
 import requests, json
-from datetime import datetime
 from AvailableStockSymbol import AvailableStock
 from GetAuthInfoFuncton import ReadConfigFile
 
@@ -29,8 +28,5 @@ def CrawlCompanyProfile(symbol:str):
     CompanyProfileDict = {str(i): CompanyProfile[i] for i in ListCrawlKeys}
     CompanyProfileDict['overview'] = CompanyProfile['overview'].replace('\r\n','')
     
-    return json.dumps(CompanyProfileDict, indent=4, ensure_ascii=False)
+    return CompanyProfileDict
 
-
-A = CrawlCompanyProfile("HPG")
-print(A)
