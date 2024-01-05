@@ -8,5 +8,5 @@ __all__ = [
     'CrawlCompanyInfoBySymbol',
     'CrawlStockPriceBySymbol',
     'ReadConfigFile',
-    'AvailableStock'
+    'AvailableStock',
 ]

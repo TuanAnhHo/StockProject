@@ -1,7 +1,6 @@
 import requests
-from AvailableStockSymbol import AvailableStock
-from GetAuthInfoFuncton import ReadConfigFile
-
+from .AvailableStockSymbol import AvailableStock
+from .GetAuthInfoFuncton import ReadConfigFile
 
 # Function to crawl company profile from FireAnt
 class CrawlCompanyInfoBySymbol:

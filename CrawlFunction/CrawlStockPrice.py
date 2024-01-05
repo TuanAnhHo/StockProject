@@ -1,7 +1,6 @@
 import requests, pandas
 from datetime import datetime
-
-from AvailableStockSymbol import AvailableStock
+from .AvailableStockSymbol import AvailableStock
 
 
 ## Function to fetch SSI API to get StockPrice of particular symbol in a range time
@@ -14,7 +13,6 @@ class CrawlStockPriceBySymbol:
         self.RangeTimeConfig = self.ValidateRangeTime(from_date, to_date)
 
     ## Function to convert date string to seconds
-
     @staticmethod
     def ConvertDateToSeconds(input_date: str) -> int:
         return int(datetime.strptime(input_date, '%Y-%m-%d').timestamp()) + (
@@ -32,7 +30,7 @@ class CrawlStockPriceBySymbol:
             "to_date_convert": to_date_converted,
         }
 
-    def CrawlDataResponse(self):
+    def GetResponse(self):
         ## Set up URL base and Headers for API
         url_base = "https://iboard.ssi.com.vn/dchart/api/history?"
         headers = {
@@ -57,9 +55,9 @@ class CrawlStockPriceBySymbol:
 
         return response.json()
 
-    def ParseResponse(self):
+    def SymbolStockPrice(self):
         ## Parse response to Dataframe
-        JsonResponse = self.CrawlDataResponse()
+        JsonResponse = self.GetResponse()
 
         if not JsonResponse.get('t'):
             print("There is no data")
@@ -79,3 +77,5 @@ class CrawlStockPriceBySymbol:
 
             except:
                 raise ValueError("Failed to parse API response")
+
+
