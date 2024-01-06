@@ -2,6 +2,7 @@ import requests
 from .AvailableStockSymbol import AvailableStock
 from .GetAuthInfoFuncton import ReadConfigFile
 
+
 # Function to crawl company profile from FireAnt
 class CrawlCompanyInfoBySymbol:
 
@@ -16,9 +17,8 @@ class CrawlCompanyInfoBySymbol:
         # Open "AuthorizationInfo.json" to get Authorization Information
         request_url = "https://restv2.fireant.vn/symbols/{symbol}/profile".format(symbol=self.symbol)
         # Using ReadConfigFile function to get Authorization information of FireAnt
-        headers = ReadConfigFile("/Users/anhho/Desktop/DataEngineer/CrawlStockData/CrawlFunction/Authorization.ini",
-                                 "FireAnt")
-
+        headers = ReadConfigFile("Authorization.ini","FireAnt")
+        
         try:
             response = requests.get(request_url, headers=headers)
             print("API Status Code " + str(response.status_code))

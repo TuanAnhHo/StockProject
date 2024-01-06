@@ -4,8 +4,7 @@
 from sqlalchemy import create_engine
 from CrawlFunction.GetAuthInfoFuncton import ReadConfigFile
 from psycopg2 import OperationalError
-from CrawlCompanyInfo import CrawlCompanyProfile
-
+from CrawlFunction import *
 import psycopg2
 
 
@@ -75,7 +74,7 @@ class InsertCompanyProfile:
 
         ## Company profile data 
         print("Get Company profile of {symbol} symbol".format(symbol=self.symbol))
-        data = CrawlCompanyProfile(self.symbol)
+        data = CrawlCompanyInfoBySymbol(self.symbol)
 
         ## Get columns name to insert data into table
         columns_list = data.keys()
